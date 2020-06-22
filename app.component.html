@@ -1,0 +1,42 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to Task Tracker!
+  </h1>
+</div>
+<div class="container">
+      
+  <form [formGroup]="taskForm">
+    <div class="row row-eq-height">
+      <div class="col-sm-6">
+          <h3>Create a Task</h3>
+        <div>
+            <label for="fname">Task Name</label>
+            <input type="text" id="fname" name="firstname" formControlName="names" placeholder="Enter Task name.." required>
+        </div>
+        <div class="row-eq-height">
+          <label for="lname">Date</label>
+          <input type="text" id="lname" name="lastname" formControlName="date" placeholder="Enter Date.." required>
+        </div>
+        <div class="row-eq-height">
+            <label for="country">Assigned To</label>
+            <input type="text" id="fname" name="assigned" formControlName="assigned" placeholder="Enter Assigned To.." required>
+        </div>
+    </div>
+    <div class="col-sm-6 table-style">   
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let data of task">
+              <td>{{data.names}}</td>
+              <td>{{data.date}}</td>
+              <td>{{data.assigned}}</td>
+              <td><i class="fa fa-trash-o pointer" aria-hidden="true" (click)='delete(data)'></i><td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <input type="submit" value="Submit" [disabled]="!taskForm.valid" (click)='addTask()'>
+  </div>
+  </form>
+</div>
+
